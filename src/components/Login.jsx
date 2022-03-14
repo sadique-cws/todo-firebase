@@ -1,12 +1,16 @@
 import { useState } from "react";
 import {RecaptchaVerifier, signInWithPhoneNumber} from 'firebase/auth';
 import {auth} from '../firebaseConfig';
+import { useNavigate } from "react-router-dom";
+
 
 const Login  = () => {
     const countryCode = "+91";
     const [phoneno, setPhoneno] = useState(countryCode);
     const [otp, setOtp] = useState("");
     const [expandForm, setExpandForm] = useState(false)
+
+    const nav = useNavigate();
 
 
     const generateReCaptcha =() => {
@@ -43,6 +47,8 @@ const Login  = () => {
 
             confirmationResult.confirm(otp).then((result) => {
                 const user = result.user;
+                localStorage.setItem("userData",user);
+                nav("/");
                 
             }).catch((error) => {
                     console.log(error);

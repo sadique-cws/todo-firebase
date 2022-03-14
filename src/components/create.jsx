@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {db,auth} from '../firebaseConfig'
 import {ref,set,push}  from 'firebase/database';
+import { useNavigate } from "react-router-dom";
 const Create = () => {
     const [data,setData] = useState("")
 
@@ -15,6 +16,17 @@ const Create = () => {
         setData("");
 
     }
+    var nav = useNavigate();
+
+    useEffect(() => {
+        var userData = localStorage.getItem("userData");
+        if(userData){
+            nav("/");
+        }
+        if(!userData){
+            nav("/login"); 
+        }
+    },[])
     return (
         <div className="container mt-5">
             <div className="row">
