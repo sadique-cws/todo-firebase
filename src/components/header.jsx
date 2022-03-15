@@ -1,19 +1,27 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const header  = () => {
+const Header  = () => {
+
+    const nav = useNavigate()
+    
+    
     return (
         <div className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container">
                 <a href="#" className="navbar-brand">ToDo App</a>
 
-                <ul className="navbar-nav">
+                {localStorage.getItem("userData") && <ul className="navbar-nav">
                     <li className="nav-item">
-                        <Link to="/logout" className="nav-link">Logout</Link>
+                        <button type="button" className="btn btn-primary" onClick={()=>{
+                             localStorage.clear()
+                             console.log("logout")
+                              nav("/login")
+                        }} >Logout</button>
                     </li>
-                </ul>
+                </ul>}
             </div>
         </div>
     );
 }
 
-export default header;
+export default Header;

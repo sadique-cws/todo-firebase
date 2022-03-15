@@ -3,24 +3,8 @@ import Create from './components/create';
 import ListTodo from './components/listTodo';
 import './App.css';
 import Login from './components/Login';
-import { BrowserRouter, Routes,Route, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Routes,Route, useNavigate } from 'react-router-dom';
 
-
-
-
-
-
-const Logout = () => {
-  const nav = useNavigate()
-    localStorage.clear();
-    nav("/login");
-
-    return (
-      
-    )
-
-}
  
 function App() {
   const nav = useNavigate()
@@ -37,7 +21,6 @@ function App() {
               } />
 
             <Route exact path="/login" element={<Login/>}/>
-            <Route exact path="/logout" element={<Logout/>}/>
         </Routes>
 
 </>
