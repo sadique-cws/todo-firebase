@@ -1,6 +1,8 @@
 import { onValue, ref,remove,update } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import {db} from '../firebaseConfig';
+import {db,storage} from '../firebaseConfig';
+
+
 
 
 const ListTodo = () => {

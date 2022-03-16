@@ -47,7 +47,7 @@ const Login  = () => {
 
             confirmationResult.confirm(otp).then((result) => {
                 const user = result.user;
-                localStorage.setItem("userData",user);
+                localStorage.setItem("userData",JSON.stringify(user));
                 nav("/");
                 
             }).catch((error) => {
